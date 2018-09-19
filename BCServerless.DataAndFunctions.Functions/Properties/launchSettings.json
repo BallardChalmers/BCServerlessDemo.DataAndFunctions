@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BCServerlessDemo.DataAndFunctions.Functions": {
+      "commandName": "Project",
+      "commandLineArgs": "host start --pause-on-error"
+    }
+  }
+}
