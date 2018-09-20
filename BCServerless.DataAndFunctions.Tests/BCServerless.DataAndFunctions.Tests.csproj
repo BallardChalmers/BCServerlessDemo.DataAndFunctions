@@ -100,12 +100,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\SampleVehicleTest.cs" />
+    <Compile Include="UnitTests\Data\SampleVehicleTest.cs" />
     <Compile Include="IntegrationTests\SampleDataTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\Search\OrganisationQueryBuilderTests.cs" />
-    <Compile Include="Service\Search\DriverQueryBuilderTests.cs" />
-    <Compile Include="Startup\ContainerRegistrarTests.cs" />
+    <Compile Include="UnitTests\Service\Search\OrganisationQueryBuilderTests.cs" />
+    <Compile Include="UnitTests\Service\Search\DriverQueryBuilderTests.cs" />
+    <Compile Include="UnitTests\Startup\ContainerRegistrarTests.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
