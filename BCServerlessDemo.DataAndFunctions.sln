@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{309C7A80-8590-4C26-9D5D-6C12D9882812}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		Readme.md = Readme.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BCServerless.DataAndFunctions.Core", "BCServerless.DataAndFunctions.Core\BCServerless.DataAndFunctions.Core.csproj", "{3BE759DA-3162-4CFB-9986-0C6280F65D88}"
