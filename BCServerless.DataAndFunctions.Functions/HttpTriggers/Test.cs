@@ -17,6 +17,7 @@ namespace BCServerlessDemo.DataAndFunctions.Functions.HttpTriggers
             [HttpTrigger(AuthorizationLevel.Anonymous, methods: new string[] { "GET" })]HttpRequestMessage req,
             TraceWriter log)
         {
+            log.Info("Testing");
             List<string> filterNames = req.GetQueryNameValuePairs().Where(w => w.Key == "f").Select(q => q.Value).ToList();
             var values = req.GetQueryNameValuePairs().Where(w => w.Key == "v").Select(q => q.Value).ToList();
 

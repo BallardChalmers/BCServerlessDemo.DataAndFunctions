@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace BCServerlessDemo.DataAndFunctions.Functions.Api
 {
-    public interface IOrganisationLogoApi : IHttpApi
+    public interface IOrganisationPhotoApi : IHttpApi
     {
         Task<HttpResponseMessage> Get(HttpRequestMessage req, TraceWriter log);
         Task<HttpResponseMessage> Post(HttpRequestMessage req, TraceWriter log);
@@ -23,12 +23,12 @@ namespace BCServerlessDemo.DataAndFunctions.Functions.Api
         // Task<HttpResponseMessage> Delete(HttpRequestMessage req, TraceWriter log);
     }
 
-    public class OrganisationLogoApi : IOrganisationLogoApi
+    public class OrganisationPhotoApi : IOrganisationPhotoApi
     {
         private readonly IDocumentDBRepository<Organisation> _organisationRepository;
         private readonly IOrganisationService _organisationService;
 
-        public OrganisationLogoApi(IOrganisationService organisationService,
+        public OrganisationPhotoApi(IOrganisationService organisationService,
             IDocumentDBRepository<Organisation> organisationRepository)
         {
             _organisationService = organisationService;
@@ -38,13 +38,13 @@ namespace BCServerlessDemo.DataAndFunctions.Functions.Api
         public async Task<HttpResponseMessage> Get(HttpRequestMessage req, TraceWriter log)
         {
             var documentId = req.GetQueryNameValuePairs().Where(w => w.Key == "documentId").First().Value;
-            var logoId = req.GetQueryNameValuePairs().Where(w => w.Key == "logoId").First().Value;
-            if (string.IsNullOrWhiteSpace(documentId) || string.IsNullOrWhiteSpace(logoId))
+            var PhotoId = req.GetQueryNameValuePairs().Where(w => w.Key == "photoId").First().Value;
+            if (string.IsNullOrWhiteSpace(documentId) || string.IsNullOrWhiteSpace(PhotoId))
             {
                 return req.CreateResponse(HttpStatusCode.NotFound);
             }
 
-            var mediaResponse = await _organisationRepository.GetAttachmentMediaAsync(documentId, logoId);
+            var mediaResponse = await _organisationRepository.GetAttachmentMediaAsync(documentId, PhotoId);
             if (mediaResponse == null)
             {
                 return req.CreateResponse(HttpStatusCode.NotFound);
@@ -99,7 +99,7 @@ namespace BCServerlessDemo.DataAndFunctions.Functions.Api
 
             var attachment = await _organisationRepository.AddAttachment(organisation.id, fileStream, "image/jpeg", filename);
 
-            organisation.LogoId = attachment.Resource.Id;
+            organisation.PhotoId = attachment.Resource.Id;
             await _organisationService.UpdateAsync(organisation, req);
 
             return req.CreateResponse(HttpStatusCode.OK, organisation);

@@ -82,7 +82,7 @@ namespace BCServerlessDemo.DataAndFunctions.Functions.Api
 
             await UpdateUserRoles(req);
 
-            var sampleFile = await AddSampleFile(req);
+            // var sampleFile = await AddSampleFile(req);
 
             foreach (var journey in SampleJourneys.All)
             {
@@ -151,13 +151,13 @@ namespace BCServerlessDemo.DataAndFunctions.Functions.Api
 
         private async Task UpdateUserRoles(HttpRequestMessage req)
         {
-            var mikeDriverAdmin = SampleUsers.MikeDriverAdmin;
+            var mikeDriverAdmin = SampleUsers.DriverAdmin;
 
             var user = await _userDBRepository.GetItemAsync(mikeDriverAdmin.id);
             user.organisationId = mikeDriverAdmin.organisationId;
             user.organisationName = mikeDriverAdmin.organisationName;
-            user.AppRole = mikeDriverAdmin.AppRole;
-            user.AppRoleDisplayName = mikeDriverAdmin.AppRoleDisplayName;
+            user.appRole = mikeDriverAdmin.appRole;
+            user.appRoleDisplayName = mikeDriverAdmin.appRoleDisplayName;
             user.driverId = mikeDriverAdmin.driverId;
             await _userDBRepository.UpdateItemAsync(user.id, user, _userDigestService, req);
         }

@@ -14,11 +14,11 @@ namespace BCServerlessDemo.DataAndFunctions.Core.Data.Sample
 {
     public static class SampleVehicles
     {
-        public static List<Vehicle> All => ImportJourneysFromFile();
+        public static List<Vehicle> All => ImportVehiclesFromFile();
 
-        public static List<Vehicle> ImportJourneysFromFile()
+        public static List<Vehicle> ImportVehiclesFromFile()
         {
-            string vehiclesSamplePath = AssemblyDirectory + "/../Automobile_data-clean.csv";
+            string vehiclesSamplePath = Utilities.AssemblyDirectory + "/../Automobile_data-clean.csv";
             
             System.IO.TextReader reader = File.OpenText(vehiclesSamplePath);
 
@@ -27,22 +27,6 @@ namespace BCServerlessDemo.DataAndFunctions.Core.Data.Sample
             var records = csv.GetRecords<Vehicle>();
 
             return records.ToList<Vehicle>();
-        }
-
-        public static string AssemblyDirectory
-        {
-            get
-            {
-                string codeBase = Assembly.GetExecutingAssembly().CodeBase;
-                UriBuilder uri = new UriBuilder(codeBase);
-                string path = Uri.UnescapeDataString(uri.Path);
-                if (path.Contains("BCServerlessDemo.DataAndFunctions.Functions"))
-                {
-                    // Target parent dir as dll copied to bin folder for Functions
-                    return Path.GetDirectoryName(path) + "/..";
-                }
-                return Path.GetDirectoryName(path);
-            }
         }
     }
 }

@@ -18,6 +18,7 @@ namespace BCServerlessDemo.DataAndFunctions.Core.Service
         string B2CTenant { get; }
         string B2CClient { get; }
         string B2CSecret { get; }
+        string BingMapsAPI { get; }
         bool AssignNewUserAdminRole { get; }
     }
 
@@ -30,6 +31,7 @@ namespace BCServerlessDemo.DataAndFunctions.Core.Service
         private string _b2CTenant;
         private string _b2CClient;
         private string _b2CSecret;
+        private string _bingMapsAPI;
         private bool _assignNewUserAdminRole;
         private static KeyVaultClient _kvClient;
         private static HttpClient _client;
@@ -74,6 +76,7 @@ namespace BCServerlessDemo.DataAndFunctions.Core.Service
         //public string B2CClient => ConfigurationManager.AppSettings["B2CClient"];
         public string B2CClient => GetValueFromVault("B2CClient");
         public string B2CSecret => GetValueFromVault("B2CSecret");
+        public string BingMapsAPI => GetValueFromVault("BingMapsAPI");
         public bool AssignNewUserAdminRole => TryParse(ConfigurationManager.AppSettings["AssignNewUserAdminRole"]);
 
         private bool TryParse(string value)

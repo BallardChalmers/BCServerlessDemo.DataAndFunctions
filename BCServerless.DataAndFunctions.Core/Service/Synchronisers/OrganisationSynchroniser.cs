@@ -32,10 +32,10 @@ namespace BCServerlessDemo.DataAndFunctions.Core.Service.Synchronisers
             }
 
             // Update journeys
-            var journeys = await _journeyRepo.GetItemsAsync(c => c.Driver.Organisation.id == organisation.id);
+            var journeys = await _journeyRepo.GetItemsAsync(c => c./*Driver.Organisation.*/id == organisation.id);
             foreach (var journey in journeys)
             {
-                journey.Driver.Organisation = organisation;
+                //  journey.Driver.Organisation = organisation;
                 await _journeyRepo.UpdateItemAsync(journey.id, journey, null);
             }
         }

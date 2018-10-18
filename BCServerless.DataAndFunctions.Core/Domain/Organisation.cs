@@ -10,7 +10,8 @@ namespace BCServerlessDemo.DataAndFunctions.Core.Domain
 {
     public class Organisation : BaseModel
     {
-        [JsonProperty(PropertyName = "logoId")] public string LogoId { get; set; }
+        [JsonProperty(PropertyName = "photoId")] public string PhotoId { get; set; }
+        [JsonProperty(PropertyName = "description")] public string Description { get; set; }
         public UserDB primaryContact { get; set; }
         public string proprietor { get; set; }
     }

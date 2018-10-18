@@ -16,6 +16,7 @@ namespace BCServerlessDemo.DataAndFunctions.Core.Service
         Task<Organisation> CreateAsync(Organisation item, HttpRequestMessage req);
         Task<Organisation> UpdateAsync(Organisation item, HttpRequestMessage req);
         Task<Organisation> CreateOrUpdateAsync(Organisation item, HttpRequestMessage req);
+        Task<Organisation> DeleteAsync(Organisation item, HttpRequestMessage req);
     }
 
     public class OrganisationService : IOrganisationService
@@ -52,6 +53,15 @@ namespace BCServerlessDemo.DataAndFunctions.Core.Service
             return (item.id == null || _organisationRepository.GetItemAsync(item.id).Result == null)
                 ? await CreateAsync(item, req)
             : await UpdateAsync(item, req);
+        }
+
+        public async Task<Organisation> DeleteAsync(Organisation item, HttpRequestMessage req)
+        {
+            var OrganisationBefore = await _organisationRepository.GetItemAsync(item.id);
+            
+            item = await _organisationRepository.DeleteItemAsync(item.id, item, req);
+            return item;
+
         }
     }
 }

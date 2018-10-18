@@ -12,9 +12,9 @@ namespace BCServerlessDemo.DataAndFunctions.Tests.Data
     public class SampleVehicleTest
     {
         [Test()]
-        public void ImportJourneysFromFileTest()
+        public void ImportVehiclesFromFileTest()
         {
-            List<Vehicle> actualVehicles = SampleVehicles.ImportJourneysFromFile();
+            List<Vehicle> actualVehicles = SampleVehicles.ImportVehiclesFromFile();
             Assert.IsTrue(actualVehicles.Count() > 0);
         }
     }

@@ -79,9 +79,9 @@ namespace BCServerlessDemo.DataAndFunctions.Functions.Startup
             container.Register<ISampleDataApi, SampleDataApi>();
             container.Register<IStartupApi, StartupApi>();
             container.Register<IMetadataApi, MetadataApi>();
-            container.Register<IOrganisationLogoApi, OrganisationLogoApi>();
+            container.Register<IOrganisationPhotoApi, OrganisationPhotoApi>();
             container.Register<IOrganisationsApi, OrganisationsApi>();
-            container.Register<IAdminDashboardOverviewApi, AdminDashboardOverviewApi>();
+            container.Register<IAppAdminDashboardOverviewApi, AppAdminDashboardOverviewApi>();
             container.Register<IDriversApi, DriversApi>();
             container.Register<IDriverPhotoApi, DriverPhotoApi>();
             container.Register<ISearchApi, SearchApi>();

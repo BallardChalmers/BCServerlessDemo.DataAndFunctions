@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BCServerlessDemo.DataAndFunctions.Core.Domain
 {
-    public class AdminDashboardOverview
+    public class AppAdminDashboardOverview
     {
-        public AdminDashboardOverview()
+        public AppAdminDashboardOverview()
         {
         }
 
@@ -19,6 +19,6 @@ namespace BCServerlessDemo.DataAndFunctions.Core.Domain
 
         public string orgId { get; set; }
         public string orgName { get; set; }
-        public string orgLogoId { get; set; }
+        public string orgPhotoId { get; set; }
     }
 }

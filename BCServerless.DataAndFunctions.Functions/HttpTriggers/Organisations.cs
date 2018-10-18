@@ -15,7 +15,7 @@ namespace BCServerlessDemo.DataAndFunctions.Functions.HttpTriggers
     {
         [FunctionName("Organisations")]
         public static async Task<HttpResponseMessage> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, methods: new string[] { "GET", "POST", "PUT", "OPTIONS" })]HttpRequestMessage req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, methods: new string[] { "GET", "POST", "PUT", "DELETE", "OPTIONS" })]HttpRequestMessage req,
             TraceWriter log,
             [Inject(typeof(IOrganisationsApi))]IOrganisationsApi organisationsApi)
         {
@@ -25,12 +25,13 @@ namespace BCServerlessDemo.DataAndFunctions.Functions.HttpTriggers
                 { "GET", async (r, l) => await organisationsApi.Get(r, l) },
                 { "POST", async (r, l) => await organisationsApi.Post(r, l) },
                 { "PUT", async (r, l) => await organisationsApi.Put(r, l) },
+                { "DELETE", async (r, l) => await organisationsApi.Delete(r, l) },
             };
 
             var response = httpMethods.ContainsKey(req.Method.Method) ? await httpMethods[req.Method.Method](req, log) 
                 : req.CreateResponse(req.Method.Method == "OPTIONS" ? HttpStatusCode.OK : HttpStatusCode.NotFound);
 
-            AddCORSHeader(req, response, "GET, POST, PUT, OPTIONS");
+            AddCORSHeader(req, response, "GET, POST, PUT, DELETE, OPTIONS");
 
             return response;
         } 

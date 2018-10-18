@@ -152,8 +152,8 @@ namespace BCServerlessDemo.DataAndFunctions.Core.Service
             var newUser = new UserDB(b2CUser);
             newUser.organisationId = payload.organisationId;
             newUser.organisationName = payload.organisationName;
-            newUser.AppRole = payload.AppRole;
-            newUser.AppRoleDisplayName = payload.AppRoleDisplayName;
+            newUser.appRole = payload.AppRole;
+            newUser.appRoleDisplayName = payload.AppRoleDisplayName;
             newUser.driverId = payload.driverId;
 
             return await _userRepository.CreateItemAsync(newUser, _userDigestService, req);
@@ -199,7 +199,7 @@ namespace BCServerlessDemo.DataAndFunctions.Core.Service
             var user = new UserDB(b2cUser);
             if (_applicationConfig.AssignNewUserAdminRole)
             {
-                user.AppRole = Role.Admin.ToString();
+                user.appRole = Role.Admin.ToString();
             }
 
             return await _userRepository.CreateItemAsync(user, _userDigestService, req);

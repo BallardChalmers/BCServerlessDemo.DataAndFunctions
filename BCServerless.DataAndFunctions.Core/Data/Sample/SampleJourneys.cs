@@ -5,26 +5,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using CsvHelper;
+using CsvHelper.Configuration;
+using System.Globalization;
 
 namespace BCServerlessDemo.DataAndFunctions.Core.Data.Sample
 {
     public static class SampleJourneys
     {
-        public static List<Journey> All => new List<Journey>()
-        {
-            Journey1, Journey2
-        };
+        public static List<Journey> All => ImportJourneysFromFile();
 
-        public static Journey Journey1 => new Journey()
+        public static List<Journey> ImportJourneysFromFile()
         {
-            id = "1985651c-f63f-4bd0-9ebf-888f46376c66",
-            name = "Journey 1"
-        };
+            List<Journey> journeys;
+            try
+            {
+                string vehiclesSamplePath = Utilities.AssemblyDirectory + "/../JourneyData.csv";
 
-        public static Journey Journey2 => new Journey()
-        {
-            id = "1985651c-f63f-4bd0-9ebf-888f46376c66",
-            name = "Journey 2"
-        };
+                System.IO.TextReader reader = File.OpenText(vehiclesSamplePath);
+
+                var csv = new CsvReader(reader);
+                csv.Configuration.CultureInfo = CultureInfo.GetCultureInfo("en-GB");
+                var records = csv.GetRecords<Journey>();
+                csv.Configuration.MissingFieldFound = null;
+                csv.Configuration.HeaderValidated = null;
+                journeys = records.ToList<Journey>();
+                return journeys;
+            }
+            catch (Exception exp)
+            {
+                throw new Exception("Unable to retrieve journeys");
+            }
+        }
     }
 }

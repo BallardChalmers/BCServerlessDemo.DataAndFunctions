@@ -12,8 +12,8 @@ namespace BCServerlessDemo.DataAndFunctions.Core.Domain.Account
         public string objectId { get; set; }
         public string organisationId { get; set; }
         public string organisationName { get; set; }
-        public string AppRole { get; set; }
-        public string AppRoleDisplayName { get; set; }
+        public string appRole { get; set; }
+        public string appRoleDisplayName { get; set; }
         public string driverId { get; set; }
         public bool accountEnabled { get; set; }
         public string city { get; set; }

@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace BCServerlessDemo.DataAndFunctions.Functions.Api
 {
-    public interface IAdminDashboardOverviewApi : IHttpApi
+    public interface IAppAdminDashboardOverviewApi : IHttpApi
     {
         Task<HttpResponseMessage> Get(HttpRequestMessage req, TraceWriter log);
         // Task<HttpResponseMessage> Post(HttpRequestMessage req, TraceWriter log);
@@ -23,14 +23,14 @@ namespace BCServerlessDemo.DataAndFunctions.Functions.Api
         // Task<HttpResponseMessage> Delete(HttpRequestMessage req, TraceWriter log);
     }
 
-    public class AdminDashboardOverviewApi : IAdminDashboardOverviewApi
+    public class AppAdminDashboardOverviewApi : IAppAdminDashboardOverviewApi
     {
         private readonly IDocumentDBRepository<Driver> _driverRepository;
         private readonly IDocumentDBRepository<Organisation> _organisationRepository;
         private readonly ISearchService _searchService;
         private readonly IUserDigestService _userDigestService;
 
-        public AdminDashboardOverviewApi(IDocumentDBRepository<Driver> driverRepository,
+        public AppAdminDashboardOverviewApi(IDocumentDBRepository<Driver> driverRepository,
             IDocumentDBRepository<Organisation> organisationRepository,
             ISearchService searchService,
             IUserDigestService userDigestService)
@@ -55,7 +55,7 @@ namespace BCServerlessDemo.DataAndFunctions.Functions.Api
                 org = await _organisationRepository.GetItemAsync(userDigest.OrganisationId);
             }
 
-            var overview = new AdminDashboardOverview
+            var overview = new AppAdminDashboardOverview
             {
                 driversNotExpiring = drivers.Count(),
                 driversTotal = drivers.Count(),
@@ -63,7 +63,7 @@ namespace BCServerlessDemo.DataAndFunctions.Functions.Api
                 orgsTotal = orgs.Count(),
                 orgId = userDigest.OrganisationId,
                 orgName = org?.name,
-                orgLogoId = org?.LogoId
+                orgPhotoId = org?.PhotoId
             };
 
             return req.CreateResponse(HttpStatusCode.OK, overview);

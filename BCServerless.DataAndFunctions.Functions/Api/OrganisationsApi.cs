@@ -17,7 +17,7 @@ namespace BCServerlessDemo.DataAndFunctions.Functions.Api
         Task<HttpResponseMessage> Get(HttpRequestMessage req, TraceWriter log);
         Task<HttpResponseMessage> Post(HttpRequestMessage req, TraceWriter log);
         Task<HttpResponseMessage> Put(HttpRequestMessage req, TraceWriter log);
-        // Task<HttpResponseMessage> Delete(HttpRequestMessage req, TraceWriter log);
+        Task<HttpResponseMessage> Delete(HttpRequestMessage req, TraceWriter log);
     }
 
     public class OrganisationsApi : IOrganisationsApi
@@ -70,6 +70,16 @@ namespace BCServerlessDemo.DataAndFunctions.Functions.Api
 
 
             var item = await _organisationService.UpdateAsync(payload, req);
+            return req.CreateResponse(HttpStatusCode.OK, item);
+        }
+
+        public async Task<HttpResponseMessage> Delete(HttpRequestMessage req, TraceWriter log)
+        {
+            var payload = await req.Content.ReadAsAsync<Organisation>();
+
+
+
+            var item = await _organisationService.DeleteAsync(payload, req);
             return req.CreateResponse(HttpStatusCode.OK, item);
         }
     }

@@ -22,10 +22,10 @@ namespace BCServerlessDemo.DataAndFunctions.Core.Service.Synchronisers
         public async Task SyncAsync(Driver driver)
         {
             // Update drivers related to Journeys
-            var journeys = await _journeyRepo.GetItemsAsync(c => c.Driver.id == driver.id);
+            var journeys = await _journeyRepo.GetItemsAsync(c => c./*Driver.*/id == driver.id);
             foreach(var journey in journeys)
             {
-                journey.Driver = driver;
+                //journey.Driver = driver;
                 await _journeyRepo.UpdateItemAsync(journey.id, journey, null);
             }
         }

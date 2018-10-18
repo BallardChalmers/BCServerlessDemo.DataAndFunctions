@@ -57,24 +57,24 @@ namespace BCServerlessDemo.DataAndFunctions.Core.Service.Search
         private Expression<Func<Journey, bool>> GetSearchClause(GridQueryFilter filter)
         {
             var lowerSearchTerm = filter.value.ToLower();
-            return (c => c.name.ToLower().Contains(lowerSearchTerm.ToLower()) || c.Driver.name.ToLower().Contains(lowerSearchTerm.ToLower()));
+            return (c => c.name.ToLower().Contains(lowerSearchTerm.ToLower()) || c/*.Driver*/.name.ToLower().Contains(lowerSearchTerm.ToLower()));
         }
 
         private Expression<Func<Journey, bool>> GetJourneyDateEqualsClause(DateTime date)
         {
-            return (w => w.JourneyDate == date);
+            return (w => w.PickupDate == date);
         }
 
         private Expression<Func<Journey, bool>> GetJourneyDateFromClause(DateTime date)
         {
-            return (w => w.JourneyDate >= date);
+            return (w => w.PickupDate >= date);
         }
 
         private Expression<Func<Journey, bool>> GetDriverClause(GridQueryFilter filter)
         {
             var driverId = filter.value;
 
-            return (c => c.Driver.id == driverId);
+            return (c => c./*Driver.*/id == driverId);
         }
     }
 }

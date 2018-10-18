@@ -46,7 +46,7 @@ namespace BCServerlessDemo.DataAndFunctions.Core.Service
                                 Id = user.id,
                                 DisplayName = user.displayName,
                                 OrganisationId = user.organisationId,
-                                AppRole = user.AppRole == null ? Role.Driver : Enums.Parse<Role>(user.AppRole),
+                                AppRole = user.appRole == null ? Role.Driver : Enums.Parse<Role>(user.appRole),
                                 DriverId= user.driverId
                             };
                         }
@@ -76,7 +76,7 @@ namespace BCServerlessDemo.DataAndFunctions.Core.Service
                     Id = user.id,
                     DisplayName = user.displayName,
                     OrganisationId = user.organisationId,
-                    AppRole = Enums.Parse<Role>(user.AppRole),
+                    AppRole = Enums.Parse<Role>(user.appRole),
                     DriverId= user.driverId
                 };
             }
