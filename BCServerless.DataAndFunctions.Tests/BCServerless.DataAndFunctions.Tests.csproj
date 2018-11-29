@@ -117,8 +117,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTests\Data\SampleVehicleTest.cs" />
-    <Compile Include="IntegrationTests\SampleDataTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTests\Service\Search\OrganisationQueryBuilderTests.cs" />
     <Compile Include="UnitTests\Service\Search\DriverQueryBuilderTests.cs" />
@@ -149,7 +147,10 @@
       <Name>BCServerless.DataAndFunctions.Functions</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="IntegrationTests\" />
+    <Folder Include="UnitTests\Data\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
