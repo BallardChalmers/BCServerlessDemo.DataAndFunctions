@@ -128,7 +128,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Automobile_data-clean.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="JourneyData.csv" />
     <None Include="packages.config" />
