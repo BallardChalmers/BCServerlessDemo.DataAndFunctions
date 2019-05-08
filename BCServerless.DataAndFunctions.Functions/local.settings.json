@@ -21,6 +21,7 @@
     "collectionId": "Items",
     "AssignNewUserAdminRole": "true",
     "B2CTenant": "bcserverlessdemo.onmicrosoft.com",
-    "vaultUrl": "https://bcserverlessdemovault.vault.azure.net"
+    "vaultUrl": "https://bcserverlessdemovault.vault.azure.net",
+    "APPINSIGHTS_INSTRUMENTATIONKEY": "f01e9ecc-db4f-4a88-8c48-afc03ad69719"
   }
 }

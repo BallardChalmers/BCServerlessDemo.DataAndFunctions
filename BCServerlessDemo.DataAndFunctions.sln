@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BCServerless.DataAndFunctio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BCServerless.DataAndFunctions.Tests", "BCServerless.DataAndFunctions.Tests\BCServerless.DataAndFunctions.Tests.csproj", "{B91FE6F1-12AB-4FB1-9618-46A4BE609494}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BCServerlessDemo.WebAPI", "BCServerlessDemo.WebAPI\BCServerlessDemo.WebAPI.csproj", "{40F99E79-1459-4BBA-ADE5-B67CAD1D33B5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{B91FE6F1-12AB-4FB1-9618-46A4BE609494}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B91FE6F1-12AB-4FB1-9618-46A4BE609494}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B91FE6F1-12AB-4FB1-9618-46A4BE609494}.Release|Any CPU.Build.0 = Release|Any CPU
-		{40F99E79-1459-4BBA-ADE5-B67CAD1D33B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{40F99E79-1459-4BBA-ADE5-B67CAD1D33B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{40F99E79-1459-4BBA-ADE5-B67CAD1D33B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{40F99E79-1459-4BBA-ADE5-B67CAD1D33B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -47,4 +47,5 @@
   <ItemGroup>
     <ProjectReference Include="..\BCServerless.DataAndFunctions.Core\BCServerless.DataAndFunctions.Core.csproj" />
   </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties local_1settings_1json__JSONSchema="http://json.schemastore.org/ansible-stable-2.5" /></VisualStudio></ProjectExtensions>
 </Project>
